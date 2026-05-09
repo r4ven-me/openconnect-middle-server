@@ -1,0 +1,12 @@
+#
+# OpenConnect ocserv PAM service
+# TODO: extend this stack for LDAP/PAM MFA; TOTP is currently handled by
+# ocserv native plain[passwd=...,otp=...] auth, not by PAM.
+#
+
+auth    [success=1 default=ignore] pam_unix.so nullok
+auth    requisite  pam_deny.so
+auth    required   pam_permit.so
+account include     common-account
+session include     common-session
+password include    common-password
